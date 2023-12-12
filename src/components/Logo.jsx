@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import Logo_img from "../assets/img/Logo.png"
+import { StyeldLogo } from "./style/header/Header.style";
 
 export const Logo = () => {
     return(
@@ -10,7 +10,3 @@ export const Logo = () => {
     )
 }
 
-const StyeldLogo = styled.img`
-    width: 220px;
-    height: 90px;
-`;

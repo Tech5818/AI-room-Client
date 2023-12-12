@@ -6,6 +6,10 @@
     list-style: none;
     text-decoration: none;
     font-family: 'Regular';
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @font-face {

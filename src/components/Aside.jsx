@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { AsideLogin } from "./AsideLogin";
 import { useStateContext } from "../Context";
 import { LoginButton } from "./LoginButton";
+import { StyledAside, StyledNotLoginView,StyledLoginSection, StyledLoading, StyledLoginView, StyledText } from "./style/aside/Aside.style";
 
 export const Aside = () => {
     const {isLogin} = useStateContext();
@@ -32,39 +32,3 @@ export const Aside = () => {
         </>
     )
 }
-
-const StyledAside = styled.aside`
-    width: 300px;
-    height: 100%;
-    box-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-`
-const StyledNotLoginView = styled.div`
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-`
-const StyledLoginSection = styled.div`
-    position: absolute;
-    transform-origin: center;
-    background: transparent;
-    width: 100%;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-`
-const StyledLoading = styled.div`
-    font-size: 32px;
-    font-family: bold;
-`
-const StyledLoginView = styled.div`
-    
-`
-const StyledText = styled.p`
-    font-size: 22px;
-    font-family: bold;
-    text-align: center;
-`;

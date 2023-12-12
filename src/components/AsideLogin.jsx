@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { useStateContext } from "../Context";
+import { StyledContainer, StyledAsideTitle, StyledAsideTextSection, StyledAsideText, StyledImg } from "./style/aside/Aside.style";
 
 export const AsideLogin = () => {
     const {user, isLogin} = useStateContext();
@@ -11,6 +11,7 @@ export const AsideLogin = () => {
                     당신의 정보
                 </StyledAsideTitle>
                 <StyledAsideTextSection>
+                    <StyledImg src={user.imgUrl} />
                     <StyledAsideText>
                         이름: {user.name}
                     </StyledAsideText>
@@ -28,26 +29,3 @@ export const AsideLogin = () => {
         </>
     )
 }
-
-const StyledContainer = styled.div`
-    width: 100%;
-    height: calc(100vh - 90px - 40px);
-`;
-
-const StyledAsideTitle = styled.p`
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 25px;
-    font-family: bold;
-`;
-
-const StyledAsideTextSection = styled.section`
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-`;
-const StyledAsideText = styled.p`
-    font-size: 22px;
-
-`;

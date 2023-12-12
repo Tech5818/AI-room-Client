@@ -4,7 +4,7 @@ import { addData } from "../apis/Room/addPeople";
 import { useStateContext } from "../Context";
 
 export const RoomEnter = () => {
-    const {user} = useStateContext();
+    const {user,render, setRender} = useStateContext();
     const [enterH, setEnterH] = useState("");
     const [enterM, setEnterM] = useState("");
     const [leaveH, setLeaveH] = useState("");
@@ -85,6 +85,7 @@ export const RoomEnter = () => {
                             window.localStorage.setItem("enter", true);
                             await addData(data);
                             alert("입실되었습니다.");
+                            setRender(!render);
                         } else {
                             alert("이미 입실중 입니다.")
                         }

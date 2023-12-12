@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { Aside } from "./Aside";
 import { MainContent } from "./MainContent";
+import { StyledContainer } from "./style/content/Content.style";
 
 export const Content = () => {
 
@@ -16,8 +16,3 @@ export const Content = () => {
     )
 }
 
-const StyledContainer = styled.div`
-    width: 100vw;
-    height: calc(100vh - 90px);
-    display: flex;
-`;

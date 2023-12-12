@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 import { auth } from "../firebase";
 import { signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { useStateContext } from "../Context";
+import { StyledLoginButton } from "./style/aside/Aside.style";
 
 export const LoginButton = () => {
     const {setUser, setIsLogin, render, setRender} = useStateContext();
@@ -27,6 +27,7 @@ export const LoginButton = () => {
                     grade: parseInt(User.email.substring(3, 5)) - (date.getFullYear() - 2000) + 1,
                     class: parseInt(User.email.substring(5, 7)),
                     number: parseInt(User.email.substring(7, 9)),
+                    imgUrl: User.photoURL
                 }
                 console.log(newUser);
                 window.localStorage.removeItem("click")
@@ -54,21 +55,3 @@ export const LoginButton = () => {
     )
 }
 
-const StyledLoginButton = styled.button`
-    width: 200px;
-    height: 70px;
-    background: #0066ff;
-    border: 1px solid #aaa;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .13s;
-    &:hover {
-        background: #0033dd;
-    }
-`;
