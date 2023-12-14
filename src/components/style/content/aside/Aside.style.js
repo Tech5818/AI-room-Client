@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+/**
+ * @todo Aside 전체를 감싸는 aside element
+ */
 export const StyledAside = styled.aside`
     width: 300px;
     height: 100%;
@@ -7,6 +10,9 @@ export const StyledAside = styled.aside`
     padding: 20px 40px;
 `;
 
+/**
+ * @todo 로그인이 되어 있지 않을때 보여지는 element
+ */
 export const StyledNotLoginView = styled.div`
     position: relative;
     width: 100%;
@@ -14,6 +20,9 @@ export const StyledNotLoginView = styled.div`
     justify-content: center;
 `;
 
+/**
+ * @todo 로그인 버튼을 감싸는 element
+ */
 export const StyledLoginSection = styled.div`
     position: absolute;
     transform-origin: center;
@@ -26,6 +35,9 @@ export const StyledLoginSection = styled.div`
     gap: 15px;
 `;
 
+/**
+ * @todo 로그인시 데이터를 불러오는 동안 보여지는 loading창
+ */
 export const StyledLoading = styled.div`
     font-size: 32px;
     font-family: bold;

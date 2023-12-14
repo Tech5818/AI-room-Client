@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { auth } from "../firebase";
 import { signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { useStateContext } from "../Context";
-import { StyledLoginButton } from "./style/aside/Aside.style";
+import { StyledLoginButton } from "./style/content/aside/Aside.style";
 
 export const LoginButton = () => {
     const {setUser, setIsLogin, render, setRender} = useStateContext();
@@ -34,11 +34,11 @@ export const LoginButton = () => {
                 setUser(newUser);
                 window.localStorage.setItem("User", JSON.stringify(newUser))
                 setIsLogin(true);
-            } else {
-                alert("해당 이메일은 지원하지 않습니다.")
-                window.localStorage.removeItem("click");
-                setRender(!render)
+                return
             }
+            alert("해당 이메일은 지원하지 않습니다.")
+            window.localStorage.removeItem("click");
+            setRender(!render)
         })
         .catch((error) => {
             window.localStorage.removeItem("click");

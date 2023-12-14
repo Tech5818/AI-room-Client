@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { addData } from "../apis/Room/addPeople";
 import { useStateContext } from "../Context";
+import { StyledContainer, StyledBox, StyledEnter, StyledTitle, StyledInput, StyledLeave, StyledEnterButton, StyledText } from "./style/content/main/enter/Enter.style"
 
+/**
+ * 
+ * @returns 입실 시간 및 퇴실 시간, 입실 button을 포함하는 element
+ */
 export const RoomEnter = () => {
     const {user,render, setRender} = useStateContext();
     const [enterH, setEnterH] = useState("");
@@ -101,64 +105,3 @@ export const RoomEnter = () => {
     )
 }
 
-const StyledContainer = styled.div`
-`;
-const StyledBox = styled.div`
-    width: 100%;
-    height: 120px;
-    background: #fff;
-    border-radius: 30px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 0.5px solid #bbb;
-`;
-const StyledEnter = styled.div`
-
-`
-const StyledLeave = styled.div`
-
-`
-const StyledTitle = styled.span`
-    font-size: 38px;
-`
-const StyledInput = styled.input`
-    width: 55px;
-    height: 38px;
-    font-size: 38px;
-    border: none;
-    background: transparent;
-    text-align: center;
-
-    &:focus {
-        outline: none;
-    }
-    &::-webkit-inner-spin-button {
-        appearance: none;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-    }
-`;
-const StyledEnterButton = styled.button`
-    width: 160px;
-    height: 80px;
-    font-size: 38px;
-    background: #00ff44;
-    border: 1px solid #bbb;
-    border-radius: 20px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-family: bold;
-
-    &:focus {
-        outline: none;
-    }
-`;
-const StyledText = styled.p`
-    padding: 10px 30px;
-    font-family: bold;
-    color: #888;
-    font-size: 22px;
-`

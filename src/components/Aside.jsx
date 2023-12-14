@@ -2,7 +2,7 @@ import React from "react";
 import { AsideLogin } from "./AsideLogin";
 import { useStateContext } from "../Context";
 import { LoginButton } from "./LoginButton";
-import { StyledAside, StyledNotLoginView,StyledLoginSection, StyledLoading, StyledLoginView, StyledText } from "./style/aside/Aside.style";
+import { StyledAside, StyledNotLoginView,StyledLoginSection, StyledLoading, StyledLoginView, StyledText } from "./style/content/aside/Aside.style";
 
 export const Aside = () => {
     const {isLogin} = useStateContext();

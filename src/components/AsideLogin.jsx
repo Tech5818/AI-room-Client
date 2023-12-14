@@ -1,6 +1,6 @@
 import React from "react";
 import { useStateContext } from "../Context";
-import { StyledContainer, StyledAsideTitle, StyledAsideTextSection, StyledAsideText, StyledImg } from "./style/aside/Aside.style";
+import { StyledContainer, StyledAsideTitle, StyledAsideTextSection, StyledAsideText, StyledImg } from "./style/content/aside/Aside.style";
 
 export const AsideLogin = () => {
     const {user, isLogin} = useStateContext();
