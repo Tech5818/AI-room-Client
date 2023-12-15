@@ -7,9 +7,9 @@ export const StyledContainer = styled.div`
 `;
 
 /**
- * @todo 입실 시간 및 퇴실 시간 입실 button을 감싸는 element
+ * @todo 입실 시간 및 퇴실 시간 입실 button을 감싸는 form element
  */
-export const StyledBox = styled.div`
+export const StyledForm = styled.form`
     width: 100%;
     height: 120px;
     background: #fff;
@@ -18,7 +18,6 @@ export const StyledBox = styled.div`
     padding: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border: 0.5px solid #bbb;
 `;
 
@@ -26,14 +25,14 @@ export const StyledBox = styled.div`
  * @todo 입실 시간을 기입하는 부분을 감싸는 element
  */
 export const StyledEnter = styled.div`
-
+    flex: 1;
 `
 
 /**
  * @todo 퇴실 시간을 기입하는 부분을 감싸는 element
  */
 export const StyledLeave = styled.div`
-
+    flex: 1;
 `
 
 /**
@@ -69,14 +68,15 @@ export const StyledInput = styled.input`
  */
 export const StyledEnterButton = styled.button`
     width: 160px;
-    height: 80px;
-    font-size: 38px;
-    background: #00ff44;
+    height: 65px;
+    font-size: 32px;
+    background: #88ff00;
     border: 1px solid #bbb;
     border-radius: 20px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     font-family: bold;
+    color: #fff;
 
     &:focus {
         outline: none;

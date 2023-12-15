@@ -1,9 +1,16 @@
 import React from "react";
 import { useStateContext } from "../Context";
-import { StyledContainer, StyledAsideTitle, StyledAsideTextSection, StyledAsideText, StyledImg } from "./style/content/aside/Aside.style";
+import { StyledContainer, StyledAsideTitle, StyledAsideTextSection, StyledAsideText, StyledImg, StyledLogOutButton } from "./style/content/aside/Aside.style";
+import { deleteData } from "../apis/Room/deletePeople";
 
 export const AsideLogin = () => {
-    const {user, isLogin} = useStateContext();
+    const {user, isLogin, setIsLogin} = useStateContext();
+    const handleLogOut = async () => {
+        await deleteData(user.uid);
+        window.localStorage.clear();
+        setIsLogin(false);
+    };
+
     return(
         <>
             <StyledContainer style={isLogin ? {} : {filter: "blur(14px)"}}>
@@ -11,7 +18,7 @@ export const AsideLogin = () => {
                     당신의 정보
                 </StyledAsideTitle>
                 <StyledAsideTextSection>
-                    <StyledImg src={user.imgUrl} />
+                    <StyledImg src={isLogin ? user.imgUrl: ""} />
                     <StyledAsideText>
                         이름: {user.name}
                     </StyledAsideText>
@@ -24,6 +31,9 @@ export const AsideLogin = () => {
                     <StyledAsideText>
                         번호: {user.number}번
                     </StyledAsideText>
+                    <StyledLogOutButton onClick={handleLogOut} $isLogin={isLogin}>
+                        로그아웃
+                    </StyledLogOutButton>
                 </StyledAsideTextSection>
             </StyledContainer>
         </>

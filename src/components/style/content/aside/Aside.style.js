@@ -105,3 +105,23 @@ export const StyledLoginButton = styled.button`
         background: #0033dd;
     }
 `;
+
+export const StyledLogOutButton = styled.button`
+    width: 100%;
+    height: 65px;
+    font-size: 22px;
+    transition: .1s;
+    outline: none;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    margin-top: 10px;
+    background: #ddd;
+    font-family: bold;
+    ${({$isLogin})=>($isLogin ? (`
+    cursor: pointer;
+    &:hover {
+        background: #ff0000;
+        color: #fff;
+    }`) : ``
+    )}
+`;

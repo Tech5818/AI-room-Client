@@ -20,16 +20,15 @@ export const LoginButton = () => {
             if (!result) return;
             const User = result.user.providerData[0];
             if (User.email.indexOf("@sdh.hs.kr") !== -1) {
-                console.log(User);
                 const date = new Date();
                 const newUser = {
                     name: User.displayName,
                     grade: parseInt(User.email.substring(3, 5)) - (date.getFullYear() - 2000) + 1,
                     class: parseInt(User.email.substring(5, 7)),
                     number: parseInt(User.email.substring(7, 9)),
-                    imgUrl: User.photoURL
+                    imgUrl: User.photoURL,
+                    uid: User.uid
                 }
-                console.log(newUser);
                 window.localStorage.removeItem("click")
                 setUser(newUser);
                 window.localStorage.setItem("User", JSON.stringify(newUser))

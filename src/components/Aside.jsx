@@ -6,12 +6,13 @@ import { StyledAside, StyledNotLoginView,StyledLoginSection, StyledLoading, Styl
 
 export const Aside = () => {
     const {isLogin} = useStateContext();
+
     return(
         <>
             <StyledAside>
                 {isLogin ? (
                     <StyledLoginView>
-                        <AsideLogin/>
+                        <AsideLogin />
                     </StyledLoginView>
                 ) : (
                     <StyledNotLoginView>

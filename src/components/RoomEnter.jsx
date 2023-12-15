@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addData } from "../apis/Room/addPeople";
 import { useStateContext } from "../Context";
-import { StyledContainer, StyledBox, StyledEnter, StyledTitle, StyledInput, StyledLeave, StyledEnterButton, StyledText } from "./style/content/main/enter/Enter.style"
+import { StyledContainer, StyledForm, StyledEnter, StyledTitle, StyledInput, StyledLeave, StyledEnterButton, StyledText } from "./style/content/main/enter/Enter.style"
 
 /**
  * 
@@ -14,10 +14,42 @@ export const RoomEnter = () => {
     const [leaveH, setLeaveH] = useState("");
     const [leaveM, setLeaveM] = useState("");
 
+    const handleForm = async (e) => {
+        e.preventDefault();
+
+        if(window.localStorage.getItem("User") === null){
+            alert("로그인이 필요합니다");
+            return
+        }
+        if (enterH === "" || enterM === "" || leaveH === "" || leaveM === ""){
+            alert("시간을 입력해 주세요");
+            return
+        }
+        if (window.localStorage.getItem("enter") !== "true"){
+            const data = {
+                user: user,
+                time: {
+                    enter: [parseInt(enterH) + 12, enterM],
+                    leave: [parseInt(leaveH) + 12, leaveM]
+                },
+            }
+            window.localStorage.setItem("enter", true);
+            await addData(data);
+            alert("입실되었습니다.");
+            setRender(!render);
+        } else {
+            alert("이미 입실중 입니다.")
+        }
+        setEnterH("");
+        setEnterM("");
+        setLeaveH("");
+        setLeaveM("");
+    }
+
     return(
         <>
             <StyledContainer>
-                <StyledBox>
+                <StyledForm onSubmit={handleForm}>
                     <StyledEnter>
                         <StyledTitle>입실시간 [</StyledTitle>
                         <StyledInput 
@@ -25,8 +57,13 @@ export const RoomEnter = () => {
                             placeholder="시"
                             value={enterH}
                             onChange={(e) => {
-                                if (e.target.value > 12){
-                                    alert("시간은 12시를 넘을 수 없습니다.")
+                                if(window.localStorage.getItem("User") === null){
+                                    alert("로그인이 필요합니다");
+                                    return
+                                }
+                                if (e.target.value > 9){
+                                    e.target.value = "";
+                                    alert("9시 이후로는 융합실을 사용하지 못합니다.")
                                     return
                                 }
                                 setEnterH(e.target.value)
@@ -38,6 +75,10 @@ export const RoomEnter = () => {
                             placeholder="분"
                             value={enterM}
                             onChange={(e) => {
+                                if(window.localStorage.getItem("User") === null){
+                                    alert("로그인이 필요합니다");
+                                    return
+                                }
                                 if (e.target.value > 60){
                                     alert("분은 60분을 넘을 수 없습니다.")
                                     return
@@ -54,9 +95,13 @@ export const RoomEnter = () => {
                             placeholder="시"
                             value={leaveH}
                             onChange={(e) => {
-                                if (e.target.value > 12){
+                                if(window.localStorage.getItem("User") === null){
+                                    alert("로그인이 필요합니다");
+                                    return
+                                }
+                                if (e.target.value > 9){
                                     e.target.value = "";
-                                    alert("시간은 12시를 넘을 수 없습니다.")
+                                    alert("9시 이후로는 융합실을 사용하지 못합니다.")
                                     return
                                 }
                                 setLeaveH(e.target.value)
@@ -68,6 +113,10 @@ export const RoomEnter = () => {
                             placeholder="분"
                             value={leaveM}
                             onChange={(e) => {
+                                if(window.localStorage.getItem("User") === null){
+                                    alert("로그인이 필요합니다");
+                                    return
+                                }
                                 if (e.target.value > 60){
                                     alert("분은 60분을 넘을 수 없습니다.")
                                     return
@@ -77,29 +126,9 @@ export const RoomEnter = () => {
                         />
                         <StyledTitle>]</StyledTitle>
                     </StyledLeave>
-                    <StyledEnterButton onClick={async () => {
-                        if (window.localStorage.getItem("enter") !== "true"){
-                            const data = {
-                                user: user,
-                                time: {
-                                    enter: [parseInt(enterH) + 12, enterM],
-                                    leave: [parseInt(leaveH) + 12, leaveM]
-                                },
-                            }
-                            window.localStorage.setItem("enter", true);
-                            await addData(data);
-                            alert("입실되었습니다.");
-                            setRender(!render);
-                        } else {
-                            alert("이미 입실중 입니다.")
-                        }
-                        setEnterH("");
-                        setEnterM("");
-                        setLeaveH("");
-                        setLeaveM("");
-                    }}>입실</StyledEnterButton>
-                </StyledBox>
-                <StyledText>시간은 자동으로 오후 기준입니다.</StyledText>
+                    <StyledEnterButton>입실</StyledEnterButton>
+                </StyledForm>
+                <StyledText>시간은 오후 기준입니다.</StyledText>
             </StyledContainer>
         </>
     )

@@ -20,18 +20,12 @@ export const StyledContainer = styled.div`
 
 
 
-const Styled = styled.div(({theme})=>({
-    display:"flex",
-    ...(theme.mode === 'dis' && {
-        display:  "flex"
-    }),
-}))
 
 /**
  * @todo 명단의 요소들 안에 입실된 사람들의 정보들이 기입됨
  */
 export const StyledListItem = styled.div`
-    width: 100%;
+width: 100%;
     min-height: 90px;
     max-height: 90px;
     background: #fff;
@@ -41,13 +35,25 @@ export const StyledListItem = styled.div`
     display: flex;
     align-items: center;
     padding: 15px;
-`;
+    `;
 
 /**
  * @todo 현재 입실 한 사람의 프로필 화면
- */
+*/
 export const StyledImg = styled.img`
     border-radius: 50%;
     width: 70px;
     hegith: 70px;
+`;
+
+export const StyledUserInfo = styled.div`
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    gap: 15px;
+    flex: 1;
+`;
+
+export const StyledTimeInfo = styled.div`
+    font-size: 22px;
 `;

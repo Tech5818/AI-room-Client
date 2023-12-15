@@ -5,7 +5,6 @@ import { StyledContainer } from "./style/content/Content.style";
 
 export const Content = () => {
 
-
     return(
         <>
             <StyledContainer>
